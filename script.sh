@@ -6,7 +6,7 @@
 # Define your Docker ID and Token as variables
 DHI_USER="your-docker-username"
 DHI_TOKEN="your-personal-access-token"
-DHI_IMAGE="dhi.io/httpd:2.4.68-debian13-dev" # Replace with your required image and tag
+DHI_IMAGE="dhi.io/php:8.5.8-debian13-dev" # Replace with your required image and tag
 
 # Authenticate to the DHI registry
 echo "$DHI_TOKEN" | docker login dhi.io -u "$DHI_USER" --password-stdin
