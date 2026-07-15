@@ -60,7 +60,7 @@ sed -i \
     -e "s/^\(session.use_strict_mode.*\)/;\1\nsession.use_strict_mode = 1/" \
     -e "s/^\(session.cookie_samesite.*\)/;\1\nsession.cookie_samesite = "Lax"/" \
     -e "s/^\(allow_url_fopen.*\)/;\1\nallow_url_fopen = Off/" \
-    -e "s/^\(allow_url_include\)/;\1\nallow_url_include = Off/" \
+    -e "s/^\(allow_url_include.*\)/;\1\nallow_url_include = Off/" \
     -e "s/^\(disable_functions.*\)/;\1\ndisable_functions = exec,shell_exec,passthru,system,popen,proc_open/" \
     -e "s/^;\(opcache.enable=.*\)/;\1\nopcache.enable = 1/" \
     -e "s/^;\(opcache.enable_cli.*\)/;\1\nopcache.enable_cli = 1/" \
