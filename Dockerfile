@@ -16,6 +16,7 @@ RUN git clone https://github.com/phpredis/phpredis.git \
     && ./configure \
     && make \
     && make install
+RUN echo "extension=redis.so" > /opt/php-8.5/etc/php/conf.d/redis.ini
 
 
 ### 2. Final Stage: Copy the compiled site into a minimal production image
@@ -25,7 +26,7 @@ FROM dhi.io/php:8.5.8-debian13-fpm
 COPY --chown=65532:65532 --from=builder /app/php.ini /opt/php-8.5/etc/php/
 
 COPY --from=builder /opt/php-8.5/lib/php/extensions /opt/php-8.5/lib/php/extensions/
-RUN echo "extension=redis.so" > /opt/php-8.5/etc/php/conf.d/redis.ini 
+COPY --from=builder /opt/php-8.5/etc/php/conf.d/redis.ini /opt/php-8.5/etc/php/conf.d/redis.ini
 
 EXPOSE 9000
 
