@@ -1,3 +1,7 @@
+### To build docker php image:
+# $ docker build -t dhi.io/php:8.5.8-debian13-fpm .
+#----------------------------------------------------------------
+
 ### 1. Build Stage: Use the DHI Debian dev image to install tools
 FROM dhi.io/php:8.5.8-debian13-dev AS builder
 
