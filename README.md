@@ -1,6 +1,7 @@
 ## PHP-FPM Server API using Docker Hardened Image (dhi.io)
 
-This repository is used to create an PHP-fPM server based on PHP [Docker Hardened Image (DHI)]((https://hub.docker.com/hardened-images/catalog/dhi/php)  
+### Introduction:
+This repository is used to create an PHP-FPM server based on PHP [Docker Hardened Image (DHI)](https://hub.docker.com/hardened-images/catalog/dhi/php)  
 
 Files provided:  
 - scripts.sh:
@@ -16,38 +17,18 @@ Files provided:
 
 ### Pre-configuration:
 - Run the script.sh:  
-`$ sh script.sh` 
+`$ sh script.sh`
 
-<br/>
-
-### Build the image:
-`$ docker build -t dhi.io/php:8.5.8-debian13-fpm .  
-
-### Start httpd image:
-```
-$ docker compose up -d
-```  
+### Build a PHP-FPM image:
+`$ docker build -t dhi.io/php:8.5.8-debian13-fpm .`  
 or  
-```
-$ docker run -d --name my-httpd -p 8080:8080  -p 443:443 \  
-  -v /home/app/apache2/htdocs:/usr/local/apache2/htdocs \
-  dhi.io/httpd:2.4.68-debian13
-```
+`$ docker compose up -d`  
 
-NOTE:
-  - This setting use both 8080 and 433 ports for testing. Port 443 is recommended.
-  - Check if it works.
-    Go to a web browser and enter _http://localhost:8080_ or _https://localhost:443_
+### Run a PHP script.php
+`$ docker run --rm -v /home/app/php:/var/www/html/ dhi.io/php:8.5.8-debian13-fpm php script.php`  
+or  
+`$ docker run --rm -v $(pwd):/app -w /app dhi.io/php:8.5.8-debian13-fpm php script.php`  
 
-
-### Some other commands:  
-```
-$ docker logs <container_id_or_name>      – View httpd log
-  docker logs my-httpd
-$ docker exec -it <containerID> bash      – Go to container shell, for dhi.io/httpd:2.4.68-debian13-dev only
-$ docker cp <containerID>:/container/path/file /host/path/file  – Copy file from container to host system
-```
-      
 <br/><br/>
 
 ### Basic docker commands:
