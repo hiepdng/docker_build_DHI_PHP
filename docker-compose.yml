@@ -1,0 +1,13 @@
+services:
+  php-fpm:
+    image: dhi.io/php:8.5.8-debian13-fpm
+    pull_policy: never
+    container_name: my-php-fpm
+    restart: unless-stopped
+    working_dir: /var/www/htm
+    ports:
+      - "9000:9000"
+    environment:
+      - PHP_PREFIX=/opt/php-8.5
+    volumes:
+      - /home/app/php:/var/www/html:ro
