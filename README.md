@@ -19,17 +19,39 @@ Files provided:
 - Run the script.sh:  
 `$ sh script.sh`
 
-### Build a PHP-FPM image:
+### Building a PHP-FPM image:
 `$ docker build -t dhi.io/php:8.5.8-debian13-fpm .`  
 or  
 `$ docker compose up -d`  
 
-### Run a PHP script.php
-`$ docker run --rm -v /home/app/php:/var/www/html/ dhi.io/php:8.5.8-debian13-fpm php script.php`  
+### Runing a PHP-FPM container:
+`$ docker run --rm -v /home/app/php:/var/www/html/ dhi.io/php:8.5.8-debian13-fpm`  
 or  
-`$ docker run --rm -v $(pwd):/app -w /app dhi.io/php:8.5.8-debian13-fpm php script.php`  
+`$ docker run --rm -v $(pwd):/app -w /app dhi.io/php:8.5.8-debian13-fpm`  
 
 <br/><br/>
+
+### Testing/Debugging:
+We use two images for Docker multi-stage builds:
+  - dhi.io/php:8.5.8-debian13-dev
+  - dhi.io/php:8.5.8-debian13-fpm  
+Below are some basic commands how to test/debug both images:
+`````
+-For dhi.io/php:8.5.8-debian13-dev image
+$ docker run -it --rm -v "$PWD":/app -w /app dhi.io/php:8.5.8-debian13-dev   #Running the container
+$ docker debug <containerID>                                                 #Container debug mode
+$ docker exec -it <containerID> bash                                         #Container shell mode
+
+$ ocker run -it --rm -v "$PWD":/app -w /app dhi.io/php:8.5.8-debian13-dev script.php   #Run script.php, or
+$ docker exec -it <containerID> script.php                                             #Run script.php
+
+
+-For dhi.io/php:8.5.8-debian13-fpm image
+$ docker run -it --rm -v "$PWD":/app -w /app dhi.io/php:8.5.8-debian13-fpm       #Running the container
+$ docker debug <containerID>                                                     #Debug mode
+
+$ docker run --rm -it -v $(pwd):/app -w /app dhi.io/php:8.5.8-debian13-fpm  -t   #Testing php-fpm
+`````
 
 ### Basic docker commands:
 ```
