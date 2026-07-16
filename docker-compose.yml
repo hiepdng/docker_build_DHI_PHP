@@ -1,7 +1,7 @@
 services:
   php-fpm:
     image: dhi.io/php:8.5.8-debian13-fpm
-    pull_policy: never
+    pull_policy: never                   # Require a custom image built first
     container_name: my-php-fpm
     restart: unless-stopped
     working_dir: /var/www/htm
