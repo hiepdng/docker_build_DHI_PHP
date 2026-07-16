@@ -1,5 +1,5 @@
 #!/bin/bash
-# Guides:
+# Guides: https://hub.docker.com/hardened-images/catalog/dhi/php/guides
 # $ php --ini
 # Configuration File (php.ini) Path: "/opt/php-8.5/etc/php"
 # Loaded Configuration File:         "/opt/php-8.5/etc/php/php.ini"
