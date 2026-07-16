@@ -36,21 +36,40 @@ We use two images for Docker multi-stage builds:
   - dhi.io/php:8.5.8-debian13-dev
   - dhi.io/php:8.5.8-debian13-fpm  
 Below are some basic commands how to test/debug both images:
-`````
+
+- **Testing:**
+```
+-For dhi.io/php:8.5.8-debian13-dev image:
+$ docker run -it --rm -v "$PWD":/app -w /app dhi.io/php:8.5.8-debian13-dev              #Running the container
+$ docker run -it --rm -v "$PWD":/app -w /app dhi.io/php:8.5.8-debian13-dev script.php   #Run script.php, or
+$ docker exec -it <containerID> script.php                                              #Run script.php
+
+-For dhi.io/php:8.5.8-debian13-fpm image:
+$ docker run --rm -v $(pwd):/app -w /app -p 9000:9000 dhi.io/php:8.5.8-debian13-fpm     #Running the container
+$ SCRIPT_FILENAME=script.php REQUEST_METHOD=GET cgi-fcgi -bind -connect 127.0.0.1:9000  #run script.php
+```
+  
+
+- **Debugging:**
+```
 -For dhi.io/php:8.5.8-debian13-dev image
 $ docker run -it --rm -v "$PWD":/app -w /app dhi.io/php:8.5.8-debian13-dev   #Running the container
 $ docker debug <containerID>                                                 #Container debug mode
 $ docker exec -it <containerID> bash                                         #Container shell mode
 
-$ ocker run -it --rm -v "$PWD":/app -w /app dhi.io/php:8.5.8-debian13-dev script.php   #Run script.php, or
-$ docker exec -it <containerID> script.php                                             #Run script.php
+$ docker run --rm dhi.io/php:8.5.8-debian13-dev -v       #Show php vertion
+$ docker run --rm dhi.io/php:8.5.8-debian13-dev -m       #List all php extensions
+
 
 
 -For dhi.io/php:8.5.8-debian13-fpm image
 $ docker run -it --rm -v "$PWD":/app -w /app dhi.io/php:8.5.8-debian13-fpm       #Running the container
 $ docker debug <containerID>                                                     #Debug mode
 
-$ docker run --rm -it -v $(pwd):/app -w /app dhi.io/php:8.5.8-debian13-fpm  -t   #Testing php-fpm
+$ docker run --rm -it -v $(pwd):/app -w /app dhi.io/php:8.5.8-debian13-fpm  -t   #Testing php-fpm.conf
+
+$ docker run --rm dhi.io/php:8.5.8-debian13-fpm -v       #Show php-fpm vertion
+$ docker run --rm dhi.io/php:8.5.8-debian13-fpm -m       #List all php-fpm extensions
 `````
 
 <br/><br/>
