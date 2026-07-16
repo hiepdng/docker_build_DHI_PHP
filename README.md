@@ -20,14 +20,14 @@ Files provided:
 `$ sh script.sh`
 
 ### Building a PHP-FPM image:
-`$ docker build -t dhi.io/php:8.5.8-debian13-fpm .`  
-or  
-`$ docker compose up -d`  
+`$ docker build -t dhi.io/php:8.5.8-debian13-fpm .`   
 
 ### Runing a PHP-FPM container:
 `$ docker run --rm -v /home/app/php:/var/www/html/ dhi.io/php:8.5.8-debian13-fpm`  
 or  
 `$ docker run --rm -v $(pwd):/app -w /app dhi.io/php:8.5.8-debian13-fpm`  
+or  
+`$ docker compose up -d`  
 
 <br/><br/>
 
@@ -52,6 +52,8 @@ $ docker debug <containerID>                                                    
 
 $ docker run --rm -it -v $(pwd):/app -w /app dhi.io/php:8.5.8-debian13-fpm  -t   #Testing php-fpm
 `````
+
+<br/><br/>
 
 ### Basic docker commands:
 ```
