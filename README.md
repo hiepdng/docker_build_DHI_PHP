@@ -53,9 +53,10 @@ $ SCRIPT_FILENAME=script.php REQUEST_METHOD=GET cgi-fcgi -bind -connect 127.0.0.
 - **Debugging:**
 ```
 -For dhi.io/php:8.5.8-debian13-dev image
-$ docker run -it --rm -v "$PWD":/app -w /app dhi.io/php:8.5.8-debian13-dev   #Running the container
-$ docker debug <containerID>                                                 #Container debug mode
-$ docker exec -it <containerID> bash                                         #Container shell mode
+$ docker run -it --rm -v "$PWD":/app -w /app dhi.io/php:8.5.8-debian13-dev     #Running the container
+$ docker debug <containerID>                                                   #Container debug mode
+$ docker exec -it <containerID> bash                                           #Container shell mode
+$ $ docker run --rm -it --entrypoint /bin/bash dhi.io/php:8.5.8-debian13-dev   #Container shell mode
 
 $ docker run --rm dhi.io/php:8.5.8-debian13-dev -v       #Show php vertion
 $ docker run --rm dhi.io/php:8.5.8-debian13-dev -m       #List all php extensions
