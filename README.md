@@ -15,14 +15,14 @@ Files provided:
 
 <br/>
 
-### Pre-configuration:
+### Step 1: Pre-configuration
 - Run the script.sh:  
 `$ sh script.sh`
 
-### Building a PHP-FPM image:
+### Step 2: Building a PHP-FPM image
 `$ docker build -t dhi.io/php:8.5.8-debian13-fpm .`   
 
-### Runing a PHP-FPM container:
+### Step 3: Runing a PHP-FPM container
 `$ docker run --rm -v /home/app/php:/var/www/html/ dhi.io/php:8.5.8-debian13-fpm`  
 or  
 `$ docker run --rm -v $(pwd):/app -w /app dhi.io/php:8.5.8-debian13-fpm`  
