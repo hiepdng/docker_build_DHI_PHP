@@ -36,8 +36,8 @@ docker pull "$DHI_IMAGE"
 
 # Get files from the image
 docker create --name my_container "$DHI_IMAGE"
-docker cp my_container:/usr/local/etc/php/ .
-docker rm temp_container
+docker cp my_container:/usr/local/etc/php/php.ini .
+docker rm my_container
 docker rmi "$DHI_IMAGE"
 
 
