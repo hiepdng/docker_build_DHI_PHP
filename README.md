@@ -6,7 +6,7 @@ This repository is used to create an PHP-FPM server based on PHP [Docker Hardene
 Files provided:  
 - scripts.sh:
   - Pull httpd.conf and php.init  from dhi.io/php:8.5.8-debian13-dev .
-  - You need to modify variables inside the script.sh to approreate modify the php.ini
+  - You need to modify variables inside the script.sh to appropriately modify the php.ini file
   - Create mount directory on the host system
 - Dockerfile:
   - Used to create your own local image. Modify it if neccessary.
